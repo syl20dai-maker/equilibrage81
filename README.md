@@ -1,19 +1,15 @@
-# Équilibrage 81 — PWA
+# Équilibrage circulaire — 81 positions — V2
 
-Version 81 positions.
+Nouveautés :
+- choix de l'entrée : angle du balourd ou angle à compenser ;
+- l'angle à compenser est utilisé directement comme direction de correction ;
+- masses affichées par ordre croissant de position ;
+- choix d'affichage du résultat : positions ou angles ;
+- cache PWA passé en version v2 avec suppression des anciens caches.
 
-- P1 = 0°
-- 81 positions
-- masses disponibles : 0,9 / 1,2 / 1,6 / 1,8 / 2,1 g
-- intervalles interdits : 80-81 / 81-1 / 1-2
-- tolérance : 0,10 g
-- choix Angle du balourd / Angle à compenser
-- choix résultat Positions / Angles
-- affichage des masses par position croissante
-- priorité de recherche :
-  1. nombre minimum de masses
-  2. petites masses
-  3. masse totale la plus faible
-  4. balourd résiduel le plus faible
+Remplacer les fichiers du dépôt GitHub Pages par ceux de cette archive.
 
-Cache PWA : `equilibrage81-v1-priority`.
+## V3
+- suppression de la barre/flèche rouge parasite sur le schéma ;
+- fermeture du cercle conservée en P81 → P1 ;
+- cache PWA : equilibrage-v3.
