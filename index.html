@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#123752" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="apple-mobile-web-app-title" content="Équilibrage 81" />
+  <meta name="format-detection" content="telephone=no" />
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="apple-touch-icon" href="icons/icon-192.png" />
+  <link rel="icon" href="icons/icon-192.png" />
+  <link rel="stylesheet" href="styles.css" />
+  <title>Équilibrage 81</title>
+</head>
+<body>
+  <main class="app-shell">
+    <header class="hero">
+      <div class="logo">◎</div>
+      <div>
+        <h1>Équilibrage 81</h1>
+        <p>81 positions · masses 0,9 à 2,1 g</p>
+      </div>
+    </header>
+
+    <section class="card form-card">
+      <h2>Mesure</h2>
+
+      <label>
+        Type d’angle
+        <div class="select-wrap">
+          <select id="angleMode" aria-label="Type d’angle">
+            <option value="imbalance">Angle du balourd</option>
+            <option value="correction">Angle à compenser (endroit exact)</option>
+          </select>
+        </div>
+      </label>
+
+      <label>
+        <span id="angleLabel">Angle du balourd</span>
+        <div class="input-wrap">
+          <input id="angleInput" inputmode="decimal" type="text" value="220" aria-label="Angle du balourd" />
+          <span>°</span>
+        </div>
+      </label>
+      <p id="angleHelp" class="field-help">La correction sera calculée automatiquement à l’opposé (+180°).</p>
+
+      <label>
+        Balourd initial
+        <div class="input-wrap">
+          <input id="massInput" inputmode="decimal" type="text" value="3,0" aria-label="Balourd initial" />
+          <span>g</span>
+        </div>
+      </label>
+
+      <button id="calcBtn" class="primary-btn">Calculer l’équilibrage</button>
+      <p id="statusText" class="status-text" aria-live="polite"></p>
+    </section>
+
+    <section id="resultCard" class="card hidden">
+      <div class="result-header">
+        <div>
+          <h2>✓ Solution minimale</h2>
+          <p>Tolérance ≤ 0,10 g</p>
+        </div>
+      </div>
+
+      <div class="metrics">
+        <div><span>Angle du balourd</span><strong id="rAngle">—</strong></div>
+        <div><span>Angle à compenser</span><strong id="rCorrection">—</strong></div>
+        <div><span>Balourd initial</span><strong id="rMass">—</strong></div>
+        <div><span>Nombre de masses</span><strong id="rCount">—</strong></div>
+        <div><span>Masses utilisées</span><strong id="rMassTypes">—</strong></div>
+        <div><span>Masse totale</span><strong id="rTotal">—</strong></div>
+      </div>
+
+      <div class="residual-row">
+        <span>Balourd résiduel</span>
+        <strong id="rResidual">—</strong>
+      </div>
+
+      <div class="result-choice">
+        <span>Afficher le résultat par</span>
+        <div class="segmented-control" role="group" aria-label="Type d’affichage du résultat">
+          <button id="showPositionsBtn" type="button" class="segment active">Positions</button>
+          <button id="showAnglesBtn" type="button" class="segment">Angles</button>
+        </div>
+      </div>
+
+      <h3 id="placementTitle">Masses à placer</h3>
+      <div id="placementList" class="placement-list"></div>
+    </section>
+
+    <section id="diagramCard" class="card hidden">
+      <div class="diagram-title">
+        <h2>Schéma de pose</h2>
+        <span>P1 = 0°</span>
+      </div>
+
+      <div class="canvas-wrap">
+        <canvas id="diagram" width="900" height="900" aria-label="Schéma circulaire d'équilibrage"></canvas>
+      </div>
+
+      <div class="legend">
+        <span><i class="dot red"></i>Balourd</span>
+        <span><i class="dot green"></i>Correction</span>
+        <span><i class="dot blue"></i>Masse</span>
+      </div>
+    </section>
+
+    <section class="card config-card">
+      <h2>Configuration fixe</h2>
+      <p>81 positions régulièrement réparties sur 360°.</p>
+      <p>Pas angulaire : <strong>4,444444°</strong></p>
+      <p>Masses disponibles : <strong>0,9 · 1,2 · 1,6 · 1,8 · 2,1 g</strong></p>
+      <p>Tolérance : <strong>0,10 g</strong></p>
+      <p>Intervalles interdits : <strong>80-81, 81-1 et 1-2</strong></p>
+    </section>
+
+    <section id="installCard" class="card install-card">
+      <h2>Installer sur l’écran d’accueil</h2>
+      <p id="installHelp">Sur iPhone : ouvrez cette page dans Safari, touchez Partager, puis « Sur l’écran d’accueil ».</p>
+      <button id="installBtn" class="secondary-btn hidden">Installer l’application</button>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
