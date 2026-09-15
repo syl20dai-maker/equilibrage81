@@ -85,8 +85,8 @@ function draw(result,massInput){
   ctx.fillText('SCHÉMA D’ÉQUILIBRAGE — 81 POSITIONS',W/2,44);
   ctx.strokeStyle='#b7c3cf';ctx.lineWidth=1.5;ctx.setLineDash([7,7]);ctx.beginPath();ctx.moveTo(cx-R,cy);ctx.lineTo(cx+R,cy);ctx.moveTo(cx,cy-R);ctx.lineTo(cx,cy+R);ctx.stroke();ctx.setLineDash([]);
   ctx.strokeStyle='#174A73';ctx.lineWidth=4;ctx.beginPath();ctx.arc(cx,cy,R,0,Math.PI*2);ctx.stroke();
-  for(let p=1;p<=NB_POSITIONS;p++){const a=(p-1)*PAS,q=point(cx,cy,R,a);ctx.beginPath();ctx.fillStyle='#fff';ctx.strokeStyle='#174A73';ctx.lineWidth=1.4;ctx.arc(q.x,q.y,4,0,Math.PI*2);ctx.fill();ctx.stroke()}
-  [1,10,20,30,40,50,60,70,80].forEach(p=>{const q=point(cx,cy,R+33,(p-1)*PAS);ctx.font='700 15px -apple-system,sans-serif';ctx.fillStyle='#174A73';ctx.fillText('P'+p,q.x,q.y)});
+  for(let p=1;p<=NB_POSITIONS;p++){const a=(p-1)*PAS,q=point(cx,cy,R,a),forbidden=(p===1||p===2||p===80||p===81);ctx.beginPath();ctx.fillStyle=forbidden?'#E12D2D':'#fff';ctx.strokeStyle=forbidden?'#E12D2D':'#174A73';ctx.lineWidth=forbidden?2.6:1.4;ctx.arc(q.x,q.y,forbidden?6:4,0,Math.PI*2);ctx.fill();ctx.stroke()}
+  [1,2,10,20,30,40,50,60,70,80,81].forEach(p=>{const q=point(cx,cy,R+33,(p-1)*PAS);ctx.font=((p===1||p===2||p===80||p===81)?'900 ':'700 ')+'15px -apple-system,sans-serif';ctx.fillStyle=(p===1||p===2||p===80||p===81)?'#E12D2D':'#174A73';ctx.fillText('P'+p,q.x,q.y)});
   function arrow(a,color,label){const q=point(cx,cy,R-65,a);ctx.strokeStyle=color;ctx.fillStyle=color;ctx.lineWidth=7;ctx.beginPath();ctx.moveTo(cx,cy);ctx.lineTo(q.x,q.y);ctx.stroke();ctx.beginPath();ctx.arc(q.x,q.y,11,0,Math.PI*2);ctx.fill();const l=point(cx,cy,R-145,a);ctx.font='800 16px -apple-system,sans-serif';ctx.fillText(label,l.x,l.y)}
   // V3 : suppression de la barre/flèche rouge du balourd sur le cercle.
   // Seule la direction exacte à compenser est matérialisée sur le schéma.

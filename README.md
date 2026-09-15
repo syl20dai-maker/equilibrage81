@@ -13,3 +13,6 @@ Remplacer les fichiers du dépôt GitHub Pages par ceux de cette archive.
 - suppression de la barre/flèche rouge parasite sur le schéma ;
 - fermeture du cercle conservée en P81 → P1 ;
 - cache PWA : equilibrage-v3.
+
+
+V4 : positions interdites P1, P2, P80 et P81 affichées en rouge sur le cercle. Cache PWA v4.
