@@ -1,4 +1,4 @@
-const CACHE_NAME = "equilibrage81-v1-priority";
+const CACHE_NAME = "equilibrage81-v2-simple-mass-dots";
 const APP_SHELL = [
   "./",
   "./index.html",
