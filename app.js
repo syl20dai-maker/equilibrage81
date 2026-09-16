@@ -30,6 +30,25 @@ function lexMassesBetter(a,b){
 }
 function better(cand,best){
   if(!best)return true;
+
+  // Le nombre de masses reste la priorité absolue : solve() recherche
+  // successivement 1 masse, puis 2, puis 3, etc. À nombre égal,
+  // privilégier idéalement une solution composée de masses identiques.
+  const candTypes=new Set(cand.massesSorted.map(m=>m.toFixed(3))).size;
+  const bestTypes=new Set(best.massesSorted.map(m=>m.toFixed(3))).size;
+  const candIdentical=candTypes===1;
+  const bestIdentical=bestTypes===1;
+
+  if(candIdentical&&!bestIdentical)return true;
+  if(bestIdentical&&!candIdentical)return false;
+
+  // S'il n'existe pas de solution entièrement identique, préférer celle
+  // utilisant le moins de valeurs de masses différentes.
+  if(candTypes<bestTypes)return true;
+  if(candTypes>bestTypes)return false;
+
+  // Ensuite conserver les priorités précédentes : petites masses,
+  // masse totale, puis balourd résiduel.
   if(lexMassesBetter(cand.massesSorted,best.massesSorted))return true;
   if(lexMassesBetter(best.massesSorted,cand.massesSorted))return false;
   if(cand.total<best.total-1e-9)return true;
