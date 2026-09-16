@@ -91,7 +91,7 @@ function draw(result,massInput){
   // V3 : suppression de la barre/flèche rouge du balourd sur le cercle.
   // Seule la direction exacte à compenser est matérialisée sur le schéma.
   arrow(result.correction,'#1E9B50','À COMPENSER');
-  if(result.combo)result.combo.forEach((it,i)=>{const q=point(cx,cy,R,it.angle);ctx.fillStyle='#17649A';ctx.strokeStyle='#fff';ctx.lineWidth=3;ctx.beginPath();ctx.arc(q.x,q.y,14,0,Math.PI*2);ctx.fill();ctx.stroke();const l=point(cx,cy,R+70+(i%2)*25,it.angle);ctx.fillStyle='#174A73';ctx.font='800 15px -apple-system,sans-serif';const label=resultMode()==='angles'?`${fmt(it.angle)}° · ${it.mass.toFixed(1)} g`:`${it.intervalle} · ${it.mass.toFixed(1)} g`;ctx.fillText(label,l.x,l.y)});
+  // Sur le cercle, chaque masse est indiquée uniquement par un point bleu.\n  if(result.combo)result.combo.forEach(it=>{const q=point(cx,cy,R,it.angle);ctx.fillStyle='#17649A';ctx.strokeStyle='#fff';ctx.lineWidth=3;ctx.beginPath();ctx.arc(q.x,q.y,14,0,Math.PI*2);ctx.fill();ctx.stroke()});
   ctx.fillStyle='#374151';ctx.beginPath();ctx.arc(cx,cy,7,0,Math.PI*2);ctx.fill();
 }
 function show(result,mass){
