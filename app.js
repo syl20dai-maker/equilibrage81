@@ -91,7 +91,19 @@ function draw(result,massInput){
   // V3 : suppression de la barre/flèche rouge du balourd sur le cercle.
   // Seule la direction exacte à compenser est matérialisée sur le schéma.
   arrow(result.correction,'#1E9B50','À COMPENSER');
-  // Sur le cercle, chaque masse est indiquée uniquement par un point bleu.\n  if(result.combo)result.combo.forEach(it=>{const q=point(cx,cy,R,it.angle);ctx.fillStyle='#17649A';ctx.strokeStyle='#fff';ctx.lineWidth=3;ctx.beginPath();ctx.arc(q.x,q.y,14,0,Math.PI*2);ctx.fill();ctx.stroke()});
+  // Masses : gros points bleu vif, légèrement à l'extérieur du cercle.
+  if(result.combo)result.combo.forEach(it=>{
+    const q=point(cx,cy,R+12,it.angle);
+    ctx.save();
+    ctx.fillStyle='#008CFF';
+    ctx.strokeStyle='#002B49';
+    ctx.lineWidth=4;
+    ctx.beginPath();
+    ctx.arc(q.x,q.y,13,0,Math.PI*2);
+    ctx.fill();
+    ctx.stroke();
+    ctx.restore();
+  });
   ctx.fillStyle='#374151';ctx.beginPath();ctx.arc(cx,cy,7,0,Math.PI*2);ctx.fill();
 }
 function show(result,mass){
